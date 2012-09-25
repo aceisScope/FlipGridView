@@ -93,23 +93,26 @@
 
 - (void)setCuttrentContent:(NSDictionary*)currentDict andBackgroundColor:(UIColor *)backgroudColor
 {
-    self.currentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    self.currentView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.currentView];
-    
-    UILabel *currentTopicLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 5, 30)];
-    [self.currentView addSubview:currentTopicLabel];
-    currentTopicLabel.backgroundColor = [UIColor clearColor];
-    currentTopicLabel.tag = 1000;
-    currentTopicLabel.textColor = backgroudColor;
-    
-    UILabel *currentTweetLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 45, self.frame.size.width - 10, self.frame.size.height - 50)];
-    currentTweetLabel.backgroundColor = [UIColor clearColor];
-    currentTweetLabel.tag = 1001;
-    [self.currentView addSubview:currentTweetLabel];
-    currentTweetLabel.font = [UIFont systemFontOfSize:12];
-    currentTweetLabel.numberOfLines = 0;
-    currentTweetLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    if (self.currentView == nil)
+    {
+        self.currentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.currentView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.currentView];
+        
+        UILabel *currentTopicLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 5, 30)];
+        [self.currentView addSubview:currentTopicLabel];
+        currentTopicLabel.backgroundColor = [UIColor clearColor];
+        currentTopicLabel.tag = 1000;
+        currentTopicLabel.textColor = backgroudColor;
+        
+        UILabel *currentTweetLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 45, self.frame.size.width - 10, self.frame.size.height - 50)];
+        currentTweetLabel.backgroundColor = [UIColor clearColor];
+        currentTweetLabel.tag = 1001;
+        [self.currentView addSubview:currentTweetLabel];
+        currentTweetLabel.font = [UIFont systemFontOfSize:12];
+        currentTweetLabel.numberOfLines = 0;
+        currentTweetLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    }
     
     //random layout for top/bottom, left/right
     [self randomization:self.currentView];
@@ -123,23 +126,26 @@
 }
 - (void)setNextContent:(NSDictionary*)nextDict andBackgroundColor:(UIColor *)backgroudColor
 {
-    self.nextView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    self.nextView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.nextView];
-    
-    UILabel *nextTopicLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 5, 30)];
-    nextTopicLabel.backgroundColor = [UIColor clearColor];
-    [self.nextView addSubview:nextTopicLabel];
-    nextTopicLabel.tag = 1000;
-    nextTopicLabel.textColor = backgroudColor;
-    
-    UILabel *nextTweetLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 45, self.frame.size.width - 10, self.frame.size.height - 50)];
-    nextTweetLabel.backgroundColor = [UIColor clearColor];
-    nextTweetLabel.tag = 1001;
-    [self.nextView addSubview:nextTweetLabel];
-    nextTweetLabel.font = [UIFont systemFontOfSize:12];
-    nextTweetLabel.numberOfLines = 0;
-    nextTweetLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    if (self.nextView == nil)
+    {
+        self.nextView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.nextView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.nextView];
+        
+        UILabel *nextTopicLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 5, 30)];
+        nextTopicLabel.backgroundColor = [UIColor clearColor];
+        [self.nextView addSubview:nextTopicLabel];
+        nextTopicLabel.tag = 1000;
+        nextTopicLabel.textColor = backgroudColor;
+        
+        UILabel *nextTweetLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 45, self.frame.size.width - 10, self.frame.size.height - 50)];
+        nextTweetLabel.backgroundColor = [UIColor clearColor];
+        nextTweetLabel.tag = 1001;
+        [self.nextView addSubview:nextTweetLabel];
+        nextTweetLabel.font = [UIFont systemFontOfSize:12];
+        nextTweetLabel.numberOfLines = 0;
+        nextTweetLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    }
     
     //random layout for top/bottom, left/right
     [self randomization:self.nextView];

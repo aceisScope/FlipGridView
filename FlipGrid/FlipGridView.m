@@ -171,6 +171,22 @@
 
 - (void) flipPage
 {
+    [self setFlipProgress:1.0 setDelegate:NO animate:YES];
+    [self performSelector:@selector(flipPageBack) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(flipPageForward) withObject:nil afterDelay:3.0];
+}
+
+- (void) flipPageBack
+{
+    startFlipAngle = 0;
+    endFlipAngle = -M_PI*2/3;
+	[self setFlipProgress:1.0 setDelegate:NO animate:YES];
+}
+
+- (void) flipPageForward
+{
+    startFlipAngle = M_PI*5/6;
+    endFlipAngle = M_PI;
 	[self setFlipProgress:1.0 setDelegate:YES animate:YES];
 }
 
@@ -301,8 +317,9 @@
     
 	float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
 	
-	float duration = animate ? 2.0 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	
+	//float duration = animate ? 2.0 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
+	float duration = animate ? 2.0 * fabs((fabs(newAngle) - fabs(currentAngle)) / (fabs(endFlipAngle) - fabs(startFlipAngle))) : 0;
+    
 	currentAngle = newAngle;
 	
 	CATransform3D endTransform = CATransform3DIdentity;
